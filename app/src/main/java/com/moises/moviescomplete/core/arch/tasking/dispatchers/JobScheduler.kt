@@ -1,4 +1,5 @@
 package com.moises.moviescomplete.core.arch.tasking.dispatchers
 
-interface JobScheduler {
-}
+import java.util.concurrent.Executor
+
+interface JobScheduler : Executor
