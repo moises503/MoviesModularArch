@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -10,13 +10,13 @@ android {
     buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "com.moises.moviescomplete"
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -26,33 +26,19 @@ android {
         }
     }
 
-// To inline the bytecode built with JVM target 1.8 into
-// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
-
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation project(path: ':core')
-    implementation project(path: ':popularmovies')
 
-    //Dependency injection frameworks
+    //Dependency injection framework
     kapt libraries.daggerCompiler
     kapt libraries.daggerAndroidProcessor
 
-    //SQLite database wrapper
+    //Room
     kapt libraries.roomCompiler
 
     testImplementation 'junit:junit:4.12'

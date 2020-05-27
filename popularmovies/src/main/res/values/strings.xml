@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular_movies_error_message">No fue posible recuperar el listado de películas populares</string>
+</resources>

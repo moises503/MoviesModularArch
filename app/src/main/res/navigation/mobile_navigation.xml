@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_popular"
-        android:name="com.moises.moviescomplete.popular.framework.ui.PopularMoviesFragment"
+        android:name="com.moises.popularmovies.framework.ui.PopularMoviesFragment"
         android:label="@string/title_popular"
         tools:layout="@layout/fragment_popular" />
 

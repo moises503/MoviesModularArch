@@ -1,2 +1,4 @@
 rootProject.name='Movies Complete'
 include ':app'
+include ':core'
+include ':popularmovies'
