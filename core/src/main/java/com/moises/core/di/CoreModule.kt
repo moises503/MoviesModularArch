@@ -21,7 +21,7 @@ class CoreModule {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient().newBuilder().addInterceptor(interceptor).addInterceptor {
-            var request = it.request()
+            val request = it.request()
             val builder = request.newBuilder()
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type","application/json")

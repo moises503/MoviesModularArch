@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="width_default_gallery">200dp</dimen>
+    <dimen name="height_default_gallery">200dp</dimen>
+    <dimen name="small_separation">5dp</dimen>
+    <dimen name="text_list_size_normal">14sp</dimen>
+    <dimen name="normal_separation">10dp</dimen>
+    <dimen name="text_list_size_small">12sp</dimen>
+</resources>

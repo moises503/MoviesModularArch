@@ -1,4 +1,3 @@
 package com.moises.core.ui
 
-class DataBindingVariables {
-}
+data class DataBindingVariables(val variableId : Int, val variableValue : Any)
