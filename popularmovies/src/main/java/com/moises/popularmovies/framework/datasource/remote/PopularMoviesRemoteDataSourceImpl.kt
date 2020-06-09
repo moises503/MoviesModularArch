@@ -12,6 +12,6 @@ class PopularMoviesRemoteDataSourceImpl @Inject constructor(private val popularM
 
     override fun retrieveAllPopularMoviesFromServer(page: Int): Single<List<PopularMovie>> =
         popularMoviesEndPoint.retrieveAllPopularMovies(page).map { popularMoviesResponse ->
-            popularMoviesResponse.results?.toListPopularMoviesModel()
+            popularMoviesResponse.results.orEmpty().toListPopularMoviesModel()
         }
 }

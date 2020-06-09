@@ -27,6 +27,9 @@ ext {
     //Room
     roomVersion = "2.2.5"
 
+    //Picasso
+    picassoVersion = "2.71828"
+
     libraries = [
             //Navigation
             navigationFragment : "androidx.navigation:navigation-fragment:$androidNavigationVersion",
@@ -63,5 +66,8 @@ ext {
             roomRuntime : "androidx.room:room-runtime:$roomVersion",
             roomRx : "androidx.room:room-rxjava2:$roomVersion",
             roomCompiler : "androidx.room:room-compiler:$roomVersion",
+
+            //Picasso version
+            picasso : "com.squareup.picasso:picasso:$picassoVersion",
     ]
 }

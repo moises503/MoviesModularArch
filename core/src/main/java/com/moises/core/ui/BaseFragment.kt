@@ -20,6 +20,9 @@ abstract class BaseFragment<ScreenState> : Fragment() {
     abstract fun attachObservers()
     abstract fun renderScreenState(screenState : ScreenState)
 
+    open fun hideLoader() = Unit
+    open fun showLoader()  = Unit
+    open fun showError(message : String) = Unit
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -82,6 +82,7 @@ open class PopularMoviesFragment : BaseFragment<ScreenState<PopularMoviesScreenS
             addItemDecoration(SpacesItemDecoration(SPACE_ITEM_DECORATION))
             adapter = popularMoviesDataBindingAdapter
             layoutManager = adapterLayoutManager
+            addScrollListener()
         }
     }
 
@@ -90,6 +91,18 @@ open class PopularMoviesFragment : BaseFragment<ScreenState<PopularMoviesScreenS
             ScreenState.Loading -> showLoader()
             is ScreenState.Render -> renderInformation(screenState.data)
         }
+    }
+
+    override fun showLoader() {
+        fragmentPopularBinding.pbPopularMovies.show()
+    }
+
+    override fun hideLoader() {
+        fragmentPopularBinding.pbPopularMovies.hide()
+    }
+
+    override fun showError(message: String) {
+        requireContext().showLargeToast(message)
     }
 
     private fun renderInformation(screenStateInformation: PopularMoviesScreenState) {
@@ -104,16 +117,14 @@ open class PopularMoviesFragment : BaseFragment<ScreenState<PopularMoviesScreenS
         popularMoviesDataBindingAdapter.setItems(movies.toMutableList())
     }
 
-    private fun showLoader() {
-        fragmentPopularBinding.pbPopularMovies.show()
-    }
-
-    private fun hideLoader() {
-        fragmentPopularBinding.pbPopularMovies.hide()
-    }
-
-    private fun showError(message: String) {
-        requireContext().showLargeToast(message)
+    private fun addScrollListener() {
+        InfiniteScrollProvider().attach(
+            fragmentPopularBinding.lstPopularMovies,
+            object : InfiniteScrollProvider.OnLoadMoreListener {
+                override fun onLoadMore() {
+                    popularMoviesViewModel.retrieveAllPopularMovies()
+                }
+            })
     }
 
 }

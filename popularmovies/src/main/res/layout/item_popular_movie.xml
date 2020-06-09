@@ -28,6 +28,9 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
+                android:contentDescription="@{movie.posterPath}"
+                app:placeholder="@{@drawable/ic_image_loading}"
+                app:imageUrl="@{movie.posterPath}"
                 app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +60,7 @@
                     android:textAlignment="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white"
+                    android:text="@{movie.originalTitle}"
                     android:textSize="@dimen/text_list_size_normal" />
 
                 <TextView
@@ -70,6 +74,7 @@
                     android:textAppearance="?android:attr/textAppearanceListItem"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/text_list_size_small"
+                    android:text="@{@string/text_placeholder_votes(movie.voteAverage, movie.voteCount)}"
                     tools:text="120 with 120 votes" />
             </LinearLayout>
 
