@@ -30,6 +30,11 @@ ext {
     //Picasso
     picassoVersion = "2.71828"
 
+    //Test libraries
+    mockitoVersion = "2.13.0"
+    mockitoKotlinVersion = "2.2.0"
+    archCoreTestingVersion = "2.1.0"
+
     libraries = [
             //Navigation
             navigationFragment : "androidx.navigation:navigation-fragment:$androidNavigationVersion",
@@ -69,5 +74,11 @@ ext {
 
             //Picasso version
             picasso : "com.squareup.picasso:picasso:$picassoVersion",
+
+            //Test libraries
+            mockito         : "org.mockito:mockito-core:$mockitoVersion",
+            mockitoKotlin   : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion",
+            archCoreTesting : "android.arch.core:core-testing:$archCoreTestingVersion",
+
     ]
 }

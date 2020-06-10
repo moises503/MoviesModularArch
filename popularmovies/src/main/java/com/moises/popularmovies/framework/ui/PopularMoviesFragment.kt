@@ -28,7 +28,7 @@ open class PopularMoviesFragment : BaseFragment<ScreenState<PopularMoviesScreenS
     private lateinit var popularMoviesViewModel: PopularMoviesViewModel
     private lateinit var fragmentPopularBinding: FragmentPopularBinding
     private lateinit var popularMoviesDataBindingAdapter: GenericDataBindingAdapter<PopularMovie>
-
+    private var popularMovies : MutableList<PopularMovie> = mutableListOf()
 
     override fun onAttach(context: Context) {
         setupInjection(context)
@@ -114,7 +114,8 @@ open class PopularMoviesFragment : BaseFragment<ScreenState<PopularMoviesScreenS
     }
 
     private fun showPopularMovies(movies: List<PopularMovie>) {
-        popularMoviesDataBindingAdapter.setItems(movies.toMutableList())
+        popularMovies.addAll(movies.toMutableList())
+        popularMoviesDataBindingAdapter.setItems(popularMovies)
     }
 
     private fun addScrollListener() {

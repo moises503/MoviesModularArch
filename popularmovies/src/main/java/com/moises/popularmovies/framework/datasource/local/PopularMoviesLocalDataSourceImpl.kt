@@ -6,6 +6,7 @@ import com.moises.popularmovies.domain.model.PopularMovie
 import com.moises.popularmovies.framework.datasource.ext.toEntityModel
 import com.moises.popularmovies.framework.datasource.ext.toListDomainModel
 import com.moises.popularmovies.framework.datasource.ext.toListEntityModel
+import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -21,8 +22,8 @@ class PopularMoviesLocalDataSourceImpl @Inject constructor(private val popularMo
         popularMoviesDao.insertPopularMovies(movies.toListEntityModel())
     }
 
-    override fun saveAPopularMovie(movie: PopularMovie) {
-        popularMoviesDao.insertAPopularMovie(movie.toEntityModel())
+    override fun saveAPopularMovie(movie: PopularMovie) : Completable {
+        return popularMoviesDao.insertAPopularMovie(movie.toEntityModel())
     }
 
     override fun retrieveAllPopularMoviesFromDatabaseBy(page: Int): Single<List<PopularMovie>> =
