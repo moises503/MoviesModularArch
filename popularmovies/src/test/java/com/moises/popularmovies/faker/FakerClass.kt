@@ -5,7 +5,7 @@ import com.moises.popularmovies.domain.model.PopularMovie
 class FakerClass {
 
     fun popularMovies(): List<PopularMovie> {
-        var popularMovies: MutableList<PopularMovie> = mutableListOf()
+        val popularMovies: MutableList<PopularMovie> = mutableListOf()
         for (i in 1..3) {
             popularMovies.add(
                 PopularMovie(

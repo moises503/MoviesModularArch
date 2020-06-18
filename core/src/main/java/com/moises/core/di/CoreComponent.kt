@@ -8,8 +8,6 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [CoreModule::class])
 interface CoreComponent {
     fun getOkHttpClient() : OkHttpClient
     fun getRetrofit() : Retrofit

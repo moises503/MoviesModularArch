@@ -1,9 +1,9 @@
-package com.moises.popularmovies
+package com.moises.popularmovies.di
 
 import android.app.Application
 import com.moises.core.di.CoreComponent
 import com.moises.core.di.CoreComponentProvider
-import com.moises.core.di.DaggerCoreComponent
+import com.moises.core.di.DaggerCoreAppComponent
 
 class PopularMoviesAppTest : Application() , CoreComponentProvider {
 
@@ -11,7 +11,7 @@ class PopularMoviesAppTest : Application() , CoreComponentProvider {
 
     override fun provideCoreComponent(): CoreComponent {
         if (!this::coreComponent.isInitialized) {
-            coreComponent = DaggerCoreComponent.builder().build()
+            coreComponent = DaggerCoreAppComponent.builder().build()
         }
         return coreComponent
     }

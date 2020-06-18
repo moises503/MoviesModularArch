@@ -25,18 +25,19 @@ open class PopularMoviesFragment : BaseFragment<ScreenState<PopularMoviesScreenS
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var popularMoviesViewModel: PopularMoviesViewModel
+    protected lateinit var popularMoviesViewModel: PopularMoviesViewModel
     private lateinit var fragmentPopularBinding: FragmentPopularBinding
     private lateinit var popularMoviesDataBindingAdapter: GenericDataBindingAdapter<PopularMovie>
     private var popularMovies : MutableList<PopularMovie> = mutableListOf()
 
     override fun onAttach(context: Context) {
-        setupInjection(context)
+        setupInjection()
         super.onAttach(context)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        bindViewModel()
         attachObservers()
     }
 
@@ -45,14 +46,19 @@ open class PopularMoviesFragment : BaseFragment<ScreenState<PopularMoviesScreenS
         bindViews()
     }
 
-    override fun setupInjection(context: Context) {
+    override fun setupInjection() {
         DaggerPopularMoviesComponent
             .builder()
             .coreComponent(CoreInjectHelper.provideCoreComponent(requireActivity().applicationContext))
-            .databaseModule(DatabaseModule(context))
-            .popularMoviesModule(PopularMoviesModule(context))
+            .databaseModule(DatabaseModule(requireContext()))
+            .popularMoviesModule(PopularMoviesModule(requireContext()))
             .build()
             .inject(this)
+    }
+
+    override fun bindViewModel() {
+        popularMoviesViewModel =
+            ViewModelProvider(this, viewModelFactory).get(PopularMoviesViewModel::class.java)
     }
 
     override fun bindFragmentView(
@@ -64,14 +70,12 @@ open class PopularMoviesFragment : BaseFragment<ScreenState<PopularMoviesScreenS
     }
 
     override fun attachObservers() {
-        popularMoviesViewModel =
-            ViewModelProvider(this, viewModelFactory).get(PopularMoviesViewModel::class.java)
-        popularMoviesViewModel.retrieveAllPopularMovies()
         popularMoviesViewModel.popularMoviesState.observe(
             viewLifecycleOwner,
             Observer { screenState ->
                 renderScreenState(screenState)
             })
+        popularMoviesViewModel.retrieveAllPopularMovies()
     }
 
 

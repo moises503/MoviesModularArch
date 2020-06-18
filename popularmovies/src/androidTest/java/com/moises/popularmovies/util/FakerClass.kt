@@ -1,4 +1,4 @@
-package com.moises.popularmovies
+package com.moises.popularmovies.util
 
 import com.moises.popularmovies.domain.model.PopularMovie
 

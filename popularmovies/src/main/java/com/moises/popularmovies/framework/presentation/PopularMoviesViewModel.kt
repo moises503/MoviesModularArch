@@ -53,10 +53,11 @@ class PopularMoviesViewModel @Inject constructor(
         }
 
         override fun onError(e: Throwable) {
+            e.printStackTrace()
             _popularMoviesState.postValue(
                 ScreenState.Render(
                     PopularMoviesScreenState.Error(
-                        popularMoviesResources.popularMoviesErrorMessage()
+                        e.localizedMessage ?: popularMoviesResources.popularMoviesErrorMessage()
                     )
                 )
             )

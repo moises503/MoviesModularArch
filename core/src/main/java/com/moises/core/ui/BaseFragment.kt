@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 abstract class BaseFragment<ScreenState> : Fragment() {
 
-    abstract fun setupInjection(context: Context)
+    abstract fun setupInjection()
     abstract fun bindViews()
     abstract fun bindFragmentView(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): View
+    abstract fun bindViewModel()
     abstract fun attachObservers()
     abstract fun renderScreenState(screenState : ScreenState)
 

@@ -35,6 +35,9 @@ ext {
     mockitoKotlinVersion = "2.2.0"
     archCoreTestingVersion = "2.1.0"
 
+    //Test UI libraries
+    fragmentTestingVersion = "1.2.4"
+
     libraries = [
             //Navigation
             navigationFragment : "androidx.navigation:navigation-fragment:$androidNavigationVersion",
@@ -79,6 +82,9 @@ ext {
             mockito         : "org.mockito:mockito-core:$mockitoVersion",
             mockitoKotlin   : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion",
             archCoreTesting : "android.arch.core:core-testing:$archCoreTestingVersion",
+
+            //Test UI libraries
+            fragmentTesting : "androidx.fragment:fragment-testing:$fragmentTestingVersion"
 
     ]
 }

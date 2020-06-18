@@ -1,4 +1,4 @@
-package com.moises.popularmovies.di
+package com.moises.core.di.test
 
 import com.moises.core.arch.job.JobThread
 import com.moises.core.arch.job.UIThread
